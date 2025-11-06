@@ -1,0 +1,55 @@
+name: CI - Automação Cypress FRONT com Cucumber Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      # Verifica binários do Cypress (diagnóstico ótimo)
+      - name: Cypress verify
+        run: npx cypress verify
+
+      # Testes E2E (sem build/start/wait-on; ideal p/ testes de API)
+      - name: Run Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          command: npx cypress run --browser chrome
+        env:
+          CYPRESS_video: "false"
+          CYPRESS_screenshotOnRunFailure: "false"
+
+      # Artefatos (não falha se não existir)
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-artifacts
+          path: |
+            cypress/screenshots
+            cypress/videos
+            cypress/results
+          if-no-files-found: ignore
