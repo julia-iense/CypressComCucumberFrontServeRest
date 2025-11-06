@@ -19,7 +19,19 @@ When("eu clicar no botão cadastrar",() =>{
     cy.get('[data-testid = "cadastrar"]').click()
 
 })
+
+When("eu acessar a lista de usuários",() =>{
+
+    cy.get('[data-testid = "listar-usuarios"]').click()
+
+})
     
+When("eu acessar a lista de usuários",() =>{
+
+    cy.get('[data-testid = "listar-usuarios"]').click()
+
+})
+
 Then("será apresentada uma mensagem {string}",(Mensagem) =>{
 
     cy.contains(Mensagem).should('be.visible')

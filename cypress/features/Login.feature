@@ -1,4 +1,4 @@
-Feature: O usuário deve conseguir cadastrar-se no sistema e fazer login com sucesso
+Feature: O usuário deve conseguirfazer login. 
 
     Scenario Outline: Efetuar o login no site
     Given que eu preencha os campos de email e senha

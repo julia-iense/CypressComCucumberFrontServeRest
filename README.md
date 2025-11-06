@@ -43,10 +43,8 @@ npm cypress run
 
 ### Subpastas dentro da support:
 
-Request/Login - pasta destinada a autenticação do projeto.
-Request/Requests - Rotas de chamada da API.
+Request - pasta destinada a armazenar os requests feitos para o backend.
+FormUtils - Estrutura de funções utilizadas para execução de cenários de testes
 
 ## Relatório de execução 
 Este projeto utiliza o reports, ao rodar o projeto com o comando "npm cypress run" será gerado um arquivo HTML com o relatorio de toda a execução. Na Wiki do repositorio dessa aplicação, adicionei um relatorio com os pontos que eu considero mais relevantes. 
-
-
