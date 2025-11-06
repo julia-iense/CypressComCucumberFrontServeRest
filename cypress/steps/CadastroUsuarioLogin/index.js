@@ -16,7 +16,7 @@ Given("que eu preencha os campos de cadastro",() =>{
 
 When("eu clicar no botão cadastrar",() =>{
 
-    FormUtils.ClicarNoBotaoCadastrar();
+    cy.get('[data-testid = "cadastrar"]').click()
 
 })
     
@@ -40,6 +40,6 @@ Given("que os campos de login não sejam preenchidos",() =>{
 
 When("eu clicar no botão entrar",() =>{
 
-    FormUtils.ClicarNoBotaoEntrar();
+    cy.get('[data-testid = "entrar"]').click()
 
 })
